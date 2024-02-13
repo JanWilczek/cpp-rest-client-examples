@@ -11,11 +11,9 @@ int main() {
           boost::asio::ip::tcp::resolver resolver{context};
           boost::beast::tcp_stream stream{context};
 
-          const auto host = "https://api.github.com";
-          const auto endpoint =
-              "/repos/rust-lang-nursery/rust-cookbook/stargazers";
-          boost::asio::ip::tcp::resolver::query query{host, "http"};
-          const auto results = resolver.resolve(query);
+          const auto host = "jsonplaceholder.typicode.com";
+          const auto endpoint = "/posts";
+          const auto results = resolver.resolve(host, "http");
 
           stream.connect(results);
 
